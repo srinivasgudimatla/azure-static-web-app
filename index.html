@@ -1,0 +1,65 @@
+<!--Insert your HTML below-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+</head>
+<body>
+    <h1>Form Submission</h1>
+    <form id="myForm">
+        <label for="field1">Field 1:</label>
+        <input type="text" id="field1" name="field1"><br><br>
+ 
+        <label for="field2">Field 2:</label>
+        <input type="text" id="field2" name="field2"><br><br>
+ 
+        <label for="field3">Field 3:</label>
+        <input type="text" id="field3" name="field3"><br><br>
+ 
+        <label for="field4">Field 4:</label>
+        <input type="text" id="field4" name="field4"><br><br>
+ 
+        <label for="field5">Field 5:</label>
+        <input type="text" id="field5" name="field5"><br><br>
+ 
+        <label for="field6">Field 6:</label>
+        <input type="text" id="field6" name="field6"><br><br>
+ 
+        <label for="field7">Field 7:</label>
+        <input type="text" id="field7" name="field7"><br><br>
+ 
+        <label for="field8">Field 8:</label>
+        <input type="text" id="field8" name="field8"><br><br>
+ 
+        <label for="field9">Field 9:</label>
+        <input type="text" id="field9" name="field9"><br><br>
+ 
+        <label for="field10">Field 10:</label>
+        <input type="text" id="field10" name="field10"><br><br>
+ 
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+ 
+    <script>
+        async function submitForm() {
+            const formData = new FormData(document.getElementById('myForm'));
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+ 
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+ 
+            const result = await response.json();
+            alert(result.message);
+        }
+    </script>
+</body>
+</html>
+ 
